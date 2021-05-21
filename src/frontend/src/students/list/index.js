@@ -35,6 +35,7 @@ export default function StudentList({ epoch }) {
     })
       .then((result) => result.json())
       .then((result) => {
+        console.log(process.env.REACT_APP_API);
         setStudents(result);
         setFetching(false);
       });
