@@ -1,42 +1,23 @@
 
-import Resources.Driver;
-import Resources.Students;
+import Resources.StudentsPage;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import datacontainers.StudentDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
-public class TestStudent {
-
-    WebDriver driver;
-
-    @BeforeEach
-    public void setDriver() {
-        driver = new FirefoxDriver();
-        driver.get("http://localhost:3000/student");
-        driver.manage().window().maximize();
-    }
-
-    @AfterEach
-    public void tearDown() {
-        driver.quit();
-    }
+public class TestStudent extends TestBase {
 
        @Test
         public void createStudent () {
-            Students addStudent = new Students(driver);
-            addStudent.createStudent();
+           StudentDTO student = new StudentDTO("First", "Student", "Acc name", "firststudnet@test.com", "05222021");
+            StudentsPage studentsPage = new StudentsPage(driver);
+            studentsPage = studentsPage.createStudent(student);
+            Assertions.assertEquals(student.getEmail(), studentsPage.getEmail());
         }
 
         @Test
         public void updateStudent () throws InterruptedException {
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-            Students addStudent = new Students(driver);
+            StudentsPage addStudent = new StudentsPage(driver);
             addStudent.updateStudent();
         }
 
