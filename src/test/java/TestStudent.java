@@ -16,7 +16,7 @@ public class TestStudent extends TestBase {
         }
 
         @Test
-        public void updateStudent () throws InterruptedException {
+        public void updateStudent ()  {
             StudentsPage addStudent = new StudentsPage(driver);
             addStudent.updateStudent();
         }

@@ -1,25 +1,11 @@
 import Resources.Courses;
 
-
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.util.concurrent.TimeUnit;
 
-public class TestCourse {
+public class TestCourse extends TestBase{
 
-    WebDriver driver;
-
-    @BeforeEach
-    public void setDriver() {
-        driver = new FirefoxDriver();
-        driver.get("http://localhost:3000/course");
-        driver.manage().window().maximize();
-    }
 
         @Test
         public void CreateClass() {
