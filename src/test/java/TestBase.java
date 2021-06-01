@@ -11,7 +11,7 @@ public class TestBase {
 
     protected WebDriver driver;
 
-    public WebDriver setDriver(String browserName) {
+    public void setDriver(String browserName) {
         switch (browserName) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
@@ -26,26 +26,15 @@ public class TestBase {
                 driver.get("http://localhost:3000/student");
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + browserName);
-        }
-        return null;
+                System.out.println("Launching Chrome as the default browser");
 
+        }
     }
 
     @BeforeEach
     public void setUp() {
         setDriver(System.getProperty("browserName"));
     }
-
-//
-//    @BeforeEach
-//
-//    public void setDriver() {
-//        WebDriverManager.chromedriver().setup();
-//        driver = new ChromeDriver();
-//        driver.manage().window().maximize();
-//        driver.get("http://localhost:3000/student");
-//    }
 
     @AfterEach
     public void tearDown() {
